@@ -4,7 +4,7 @@ const fs = require('fs')
 const { Client, Intents } = require('discord.js')
 
 // Let's require a random file
-require('.env').config()
+require('../.env').config()
 
 // Loading config
 const config = (() => {
