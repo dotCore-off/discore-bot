@@ -1,55 +1,13 @@
-// Import libraries
+// Noob vars
+const Discord = require('discord.js');
 const path = require('path')
 const fs = require('fs')
-const { Client, Intents } = require('discord.js')
-
-// Let's require a random file
-require('.env').config()
-
-// Loading config
-const config = (() => {
-    // Bot token
-    const token = process.env.BOT_TOKEN
-
-    // In case there's no token
-    if (!token) {
-        console.error('Missing BOT_TOKEN environment variable')
-        process.exit(1)
-    }
-
-    // In case token is invalid
-    if (!/^[a-zA-Z0-9_.-]{59}$/.test(token)) {
-        console.error('Invalid bot token!')
-        process.exit(1)
-    }
-
-    // Bot prefix
-    const prefix = process.env.BOT_PREFIX
-
-    // In case there's no prefix
-    if (!prefix) {
-        console.error('Missing BOT_PREFIX environment variable')
-        process.exit(1)
-    }
-
-    // We return both token and prefix
-    return { token, prefix }
-})()
-
-// Storing commands
+const cfg = require('./config.json');
 const commands = new Map()
-
-// Define intents
-const intents = new Intents([
-    Intents.NON_PRIVILEGED,
-    "GUILD_MEMBERS",
-]);
-
-// Create the client
-const bot = new Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'], ws: { intents }, fetchAllMembers: true, disableEveryone: true })
+const bot = new Discord.Client();
 
 // Store the config and commands on the bot variable
-bot.config = config
+bot.cfg = cfg
 bot.commands = commands
 
 // Read directories function
@@ -119,4 +77,4 @@ bot.on('message', message => {
 })
 
 // Launch bot if there's a valid token
-config.token && bot.login(config.token)
+cfg.token && bot.login(cfg.token)
