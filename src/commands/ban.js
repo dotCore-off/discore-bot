@@ -121,7 +121,7 @@ exports.run = (bot, msg, args) => {
       bot.on('messageReactionAdd', (reaction, user) => {
 
         // Reaction checking #1
-        if (reaction.msg.id !== c.id) return;
+        if (reaction.message.id !== c.id) return;
 
         // Reaction checking #2 + Ban
         if (reaction.emoji.name === '✅' && user.id !== bot.user.id && user.id === msg.author.id) {
