@@ -89,7 +89,7 @@ exports.run = (bot, msg, args) => {
   }
 }
 
-// Command help
+// Status help
 exports.help = {
     name: 'status',
     usage: 'status',
