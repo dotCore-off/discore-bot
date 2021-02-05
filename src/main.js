@@ -2,12 +2,12 @@
 const Discord = require('discord.js');
 const path = require('path')
 const fs = require('fs')
-const cfg = require('config.json');
+const config = require('./config.json');
 const commands = new Map()
 const bot = new Discord.Client();
 
 // Store the config and commands on the bot variable
-bot.cfg = cfg
+bot.config = config
 bot.commands = commands
 
 // Read directories function
@@ -68,4 +68,4 @@ bot.on('message', message => {
 })
 
 // Launch bot if there's a valid token
-cfg.token && bot.login(cfg.token)
+config.token && bot.login(config.token)
