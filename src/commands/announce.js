@@ -87,7 +87,7 @@ exports.run = (bot, msg, args) => {
       .addField("Posted at :", `${dformat}`)
       .addField("Will be posted in :", `${timer} seconds`)
       .setFooter("Made by dotCore 💙", "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")
-    const logs_channel = msg.guild.channels.cache.find(ch => ch.name === cfg.logschan);
+    const logs_channel = msg.guild.channels.cache.find(ch => ch.name === config.logschan);
 
     // Logs edition function
     function logs_edition() {
