@@ -1,10 +1,10 @@
 {
-  "name": "bot-base",
-  "version": "1.0.0",
-  "description": "A simple Discord.js bot base.",
-  "main": "src/bot.js",
-  "repository": "https://github.com/RayzrDev/bot-base.git",
-  "author": "Rayzr522 <rayzr522@gmail.com>",
+  "name": "discore-bot",
+  "version": "1.2.0",
+  "description": "A polyvalent bot made for Discord.",
+  "main": "src/main.js",
+  "repository": "https://github.com/dotCore-off/discore-bot.git",
+  "author": "dotCore <private@dotcore-lab.net>",
   "license": "MIT",
   "dependencies": {
     "discord.js": "^12.5.1",
