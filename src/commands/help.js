@@ -45,7 +45,7 @@ exports.run = (bot, msg, args) => {
         }
 
         // Reaction checking #2 - If he didn't accepted with 🆗
-        if (reaction.emoji.name === '⬅️' && user.id !== bot.user.id || reaction.emoji.name === '➡️' && user.id !== bot.user.id || reaction.emoji.name !== '🆗' && user.id !== bot.user.id) {
+        if (reaction.emoji.name === '⬅️' && user.id !== bot.user.id || reaction.emoji.name === '➡️' && user.id !== bot.user.id || reaction.emoji.name !== '🆗' && reaction.emoji.name !== '❌' && user.id !== bot.user.id) {
           await reaction.users.remove(userId).catch(console.error);
           c.edit(help_embed.setFooter(`You have to hit 🆗 reaction first !`, "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png").setColor(0xFF3300)).catch(console.error);
         }
