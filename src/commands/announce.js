@@ -8,11 +8,11 @@ exports.run = (bot, msg, args) => {
     msg.delete({ timeout: 10 }).catch(console.error);
           
     // Noob vars
-    const args = msg.content.split(' ').slice(0);
-    const content = args.slice(3).join(' ');
-    const g_channel = args[1];
+    const args_com = msg.content.split(' ').slice(0);
+    const content = args_com.slice(3).join(' ');
+    const g_channel = args_com[1];
     const a_channel = bot.channels.cache.get(`${g_channel}`);
-    const timer = args[2];
+    const timer = args_com[2];
     var d = new Date,
     dformat = [d.getMonth()+1,
       d.getDate(),

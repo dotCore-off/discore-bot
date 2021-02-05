@@ -8,8 +8,8 @@ exports.run = (bot, msg, args) => {
     msg.delete({ timeout : 10 }).catch(console.error);
     
     // Noob vars
-    const args = msg.content.split(' ').slice(1);
-    const amount = args.join(' ');
+    const args_com = msg.content.split(' ').slice(1);
+    const amount = args_com.join(' ');
 
     // If no amount is given
     if (!amount) {

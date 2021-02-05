@@ -22,9 +22,9 @@ exports.run = (bot, msg, args) => {
     }
 
     // Noob vars
-    const args = msg.content.split(' ').slice(1);
+    const args_com = msg.content.split(' ').slice(1);
     const user = msg.mentions.users.first();
-    const reason = args.slice(1).join(' ');
+    const reason = args_com.slice(1).join(' ');
     let banMember = msg.mentions.members.first()
 
     // Ban - No mention
