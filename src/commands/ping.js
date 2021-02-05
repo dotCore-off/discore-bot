@@ -1,3 +1,6 @@
+// We import Discord
+const Discord = require('discord.js');
+
 // Ping function
 exports.run = (bot, msg, args) => {
   // Command + Aliases handling
