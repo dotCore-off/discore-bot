@@ -41,13 +41,6 @@ fs.readdirSync(path.resolve(__dirname, 'commands'))
 // Ready event
 bot.on('ready', () => {
     console.log(`[Discore] ❱ Logged in as ${bot.user.tag} (ID: ${bot.user.id})`)
-    bot.user.setPresence({
-        status: "online",
-        game: {
-            name: "Use ~help for the guide !",
-            type: "STREAMING"
-        }
-    });
 })
 
 // Message event
