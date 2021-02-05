@@ -2,7 +2,7 @@
 const Discord = require('discord.js');
 const path = require('path')
 const fs = require('fs')
-const config = require('./config.json');
+const config = require('../config.json');
 const commands = new Map()
 const bot = new Discord.Client();
 
