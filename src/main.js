@@ -10,13 +10,14 @@ const bot = new Discord.Client();
 bot.config = config
 bot.commands = commands
 
+console.log("[Discore] ❱ Loading function")
+
 // Read directories function
 fs.readdirSync(path.resolve(__dirname, 'commands'))
     // We filter file's types
     .filter(f => f.endsWith('.js'))
 
     // Loading loop
-    console.log("[Discore] ❱ Loading function")
     .forEach(f => {
         // Attempt to load the file
         console.log(`[Discore] ❱ Loading command ${f}`)
