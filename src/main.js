@@ -6,17 +6,17 @@ const config = require('../config.json');
 const commands = new Map()
 const bot = new Discord.Client();
 
-// Store the config and commands on the bot variable
+// Store the config and commands in variables
 bot.config = config
 bot.commands = commands
 
 // Read directories function
 fs.readdirSync(path.resolve(__dirname, 'commands'))
-    console.log("[Discore] ❱ Loading function")
     // We filter file's types
     .filter(f => f.endsWith('.js'))
 
     // Loading loop
+    console.log("[Discore] ❱ Loading function")
     .forEach(f => {
         // Attempt to load the file
         console.log(`[Discore] ❱ Loading command ${f}`)
