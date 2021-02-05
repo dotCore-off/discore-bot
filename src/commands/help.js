@@ -37,7 +37,7 @@ exports.run = (bot, msg, args) => {
         if (reaction.message.id !== c.id) return;
 
         // Reaction checking #1 - If user want to quit
-        if (reaction.emoji.name === '❌' && user.id !== bot.user.id && user.id === message.author.id) {
+        if (reaction.emoji.name === '❌' && user.id !== bot.user.id && user.id === msg.author.id) {
           // Edit embed
           c.edit(help_embed.setFooter('Got it ! Help message will shutdown in 5 seconds...', "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png").setColor(0xFF3300)).catch(console.error);
           // Delete embed
@@ -51,9 +51,9 @@ exports.run = (bot, msg, args) => {
         }
 
         // Reaction checking #4 - If he accepted the tutorial lol
-        if (reaction.emoji.name === '🆗' && user.id !== bot.user.id && user.id === message.author.id) {
+        if (reaction.emoji.name === '🆗' && user.id !== bot.user.id && user.id === msg.author.id) {
           // We totally delete the 🆗 reaction
-          message.reactions.cache.get(emoji => emoji.name === '🆗').remove().catch(console.error);
+          msg.reactions.cache.get(emoji => emoji.name === '🆗').remove().catch(console.error);
         }
       })
       active_help = 0;
