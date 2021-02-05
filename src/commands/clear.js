@@ -4,8 +4,6 @@ const config = require('../../config.json');
 
 // Clear function
 exports.run = (bot, msg, args) => {
-  // Command + Aliases handling
-  if (msg.content.startsWith('~clear') || msg.content.startsWith('~clean')) {
     // Delete command
     msg.delete({ timeout : 10 }).catch(console.error);
     
@@ -81,8 +79,7 @@ exports.run = (bot, msg, args) => {
       msg.channel.send(embed).catch(console.error)
 
     // Delete embed
-    .then(m => { m.delete({ timeout : 5000 }) }).catch(console.error);      
-  }
+    .then(m => { m.delete({ timeout : 5000 }) }).catch(console.error);
 }
 
 // Clear help

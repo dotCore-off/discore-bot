@@ -3,8 +3,6 @@ const Discord = require('discord.js');
 
 // Ping function
 exports.run = (bot, msg, args) => {
-  // Command + Aliases handling
-  if (msg.content.startsWith('~statut') || msg.content.startsWith('~status') || msg.content.startsWith('~ping')) {
     // Delete command
     msg.delete({ timeout : 10 }).catch(console.error);
 
@@ -86,12 +84,11 @@ exports.run = (bot, msg, args) => {
       // Create timeout for our previous function
       setTimeout(ping_calculation, 5000);    
     })
-  }
 }
 
 // Status help
 exports.help = {
-    name: 'status',
-    usage: 'status',
+    name: 'ping',
+    usage: 'ping',
     description: 'Pings the bot to check its connection speed.'
 }

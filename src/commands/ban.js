@@ -4,9 +4,6 @@ const config = require('../../config.json');
 
 // Ban function
 exports.run = (bot, msg, args) => {
-  // Ban - Command + Aliases handling
-  if (msg.content.startsWith('~ban') || msg.content.startsWith('~b')) {
-
     // Ban - Permission checking
     if (!msg.member.hasPermission(["BAN_MEMBERS", "ADMINISTRATOR"])) {
         // Delete command
@@ -168,7 +165,6 @@ exports.run = (bot, msg, args) => {
       })
     })
   })
-  }
 }
 
 // Ban help

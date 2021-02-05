@@ -4,9 +4,6 @@ const config = require('../../config.json');
 
 // Kick function
 exports.run = (bot, msg, args) => {
-  // Kick - Command + Aliases handling
-  if (msg.content.startsWith('~kick') || msg.content.startsWith('~k')) {
-
     // Kick - Permission checking
     if (!msg.member.hasPermission(["KICK_MEMBERS", "ADMINISTRATOR"])) {
       // Delete command
@@ -168,7 +165,6 @@ exports.run = (bot, msg, args) => {
         })
       })
     })
-  }
 }
 
 // Kick help

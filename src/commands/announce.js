@@ -4,8 +4,6 @@ const config = require('../../config.json');
 
 // Announce function
 exports.run = (bot, msg, args) => {
-  // Allias + Command handling
-  if (msg.content.startsWith('~announce')) {
     // Delete command
     msg.delete({ timeout: 10 }).catch(console.error);
           
@@ -114,7 +112,6 @@ exports.run = (bot, msg, args) => {
           
     // Run both functions
     setTimeout(send_announce, m_timer);
-  }
 }
 
 // Announce help
