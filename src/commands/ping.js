@@ -1,7 +1,7 @@
 // Ping function
 exports.run = (bot, msg, args) => {
   // Command + Aliases handling
-  if (msg.content.startsWith('~statut') || mesmsgsage.content.startsWith('~status')) {
+  if (msg.content.startsWith('~statut') || msg.content.startsWith('~status')) {
     // Delete command
     msg.delete({ timeout : 10 }).catch(console.error);
 
