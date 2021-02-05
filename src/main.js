@@ -38,16 +38,7 @@ fs.readdirSync(path.resolve(__dirname, 'commands'))
 
 // Ready event
 bot.on('ready', () => {
-    // Cool log
     console.log(`Logged in as ${bot.user.tag} (ID: ${bot.user.id})`)
-
-    // Bot's permissions
-    bot.generateInvite({ permissions: [
-        'ADMINISTRATOR'
-    ]}).then(invite => {
-        // Logging invitation link
-        console.log(`Click here to invite the bot to your guild:\n${invite}`)
-    })
 })
 
 // Message event
