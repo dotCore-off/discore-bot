@@ -12,33 +12,34 @@ bot.commands = commands
 
 // Read directories function
 fs.readdirSync(path.resolve(__dirname, 'commands'))
+    console.log("[Discore] ❱ Loading function")
     // We filter file's types
     .filter(f => f.endsWith('.js'))
 
     // Loading loop
     .forEach(f => {
         // Attempt to load the file
-        console.log(`Discore - Loading command ${f}`)
+        console.log(`[Discore] ❱ Loading command ${f}`)
         try {
             // Require the raw file
             let command = require(`./commands/${f}`)
             // Validate that there's a run function and a valid help object
             if (typeof command.run !== 'function') {
-                throw 'Command is missing a run function!'
+                throw '[Discore] ❱ Command is missing a run function!'
             } else if (!command.help || !command.help.name) {
-                throw 'Command is missing a valid help object!'
+                throw '[Discore] ❱ Command is missing a valid help object!'
             }
             // Store the command in the map based on its name
             commands.set(command.help.name, command)
         } catch (error) {
             // Log any errors from the validator or from requiring the file
-            console.error(`Failed to load command ${f}: ${error}`)
+            console.error(`[Discore] ❱ Failed to load command ${f}: ${error}`)
         }
     })
 
 // Ready event
 bot.on('ready', () => {
-    console.log(`Logged in as ${bot.user.tag} (ID: ${bot.user.id})`)
+    console.log(`[Discore] ❱ Logged in as ${bot.user.tag} (ID: ${bot.user.id})`)
 })
 
 // Message event
