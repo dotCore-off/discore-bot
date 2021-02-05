@@ -155,12 +155,12 @@ exports.run = (bot, msg, args) => {
             channel.send(embed)
           
           // If kick is canceled
-          } else if (reaction.emoji.name === '❌' && user.id !== bot.user.id && user.id === message.author.id) {
+          } else if (reaction.emoji.name === '❌' && user.id !== bot.user.id && user.id === msg.author.id) {
             // Delete embed
             c.delete()
 
             // Lil message
-            message.channel.send(`⛔️ ❱ Kick of ${kickMember} has been canceled.`)
+            msg.channel.send(`⛔️ ❱ Kick of ${kickMember} has been canceled.`)
 
             // Delete embed
             .then(m => { m.delete({ timeout : 6000 }) });
