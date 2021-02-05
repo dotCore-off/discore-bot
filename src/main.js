@@ -41,15 +41,6 @@ fs.readdirSync(path.resolve(__dirname, 'commands'))
 // Ready event
 bot.on('ready', () => {
     console.log(`[Discore] ❱ Logged in as ${bot.user.tag} (ID: ${bot.user.id})`)
-    const ready_embed = new Discord.MessageEmbed()
-        .setTitle("[Discore] ❱ Core system")
-        .setThumbnail("https://upload.wikimedia.org/wikipedia/commons/e/ef/Success.png")
-        .setColor(0x3898FF)
-        .setDescription("> [Discore] is now fully online !")
-        .setFooter("Made by dotCore 💙", "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")
-    const ready_channel = message.guild.channels.cache.find(ch => ch.name === config.logschan);
-    // Send embed
-    ready_channel.send(ready_embed)
 })
 
 // Message event
@@ -77,6 +68,16 @@ bot.on('message', message => {
         commands.get(label).run(bot, message, args)
     }
 })
+
+const ready_embed = new Discord.MessageEmbed()
+    .setTitle("[Discore] ❱ Core system")
+    .setThumbnail("https://upload.wikimedia.org/wikipedia/commons/e/ef/Success.png")
+    .setColor(0x3898FF)
+    .setDescription("> [Discore] is now fully online !")
+    .setFooter("Made by dotCore 💙", "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")
+const ready_channel = message.guild.channels.cache.find(ch => ch.name === config.logschan);
+// Send embed
+ready_channel.send(ready_embed)
 
 // Launch bot if there's a valid token
 config.token && bot.login(config.token)
