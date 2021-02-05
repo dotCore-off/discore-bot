@@ -4,7 +4,7 @@ const Discord = require('discord.js');
 // Ping function
 exports.run = (bot, msg, args) => {
   // Command + Aliases handling
-  if (msg.content.startsWith('~statut') || msg.content.startsWith('~status')) {
+  if (msg.content.startsWith('~statut') || msg.content.startsWith('~status') || msg.content.startsWith('~ping')) {
     // Delete command
     msg.delete({ timeout : 10 }).catch(console.error);
 
