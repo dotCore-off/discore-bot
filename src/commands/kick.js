@@ -171,7 +171,7 @@ exports.run = (bot, msg, args) => {
   }
 }
 
-// Ban help
+// Kick help
 exports.help = {
     name: 'kick',
     usage: 'kick',

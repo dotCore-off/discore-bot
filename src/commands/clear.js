@@ -70,7 +70,7 @@ exports.run = (bot, msg, args) => {
     }
 
     // Delete function
-    await msg.channel.messages.fetch({ limit: amount }).then(msg.channel.bulkDelete(amount)).catch(console.error);
+    msg.channel.messages.fetch({ limit: amount }).then(msg.channel.bulkDelete(amount)).catch(console.error);
 
     // Embed
     const embed = new Discord.MessageEmbed()
