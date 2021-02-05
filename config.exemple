@@ -1,0 +1,6 @@
+{
+    "token": "bot_token",
+    "prefix": "!",
+    "captchan": "captcha_channel",
+    "logschan": "logs_channel"
+}
