@@ -8,7 +8,7 @@ exports.run = (bot, msg, args) => {
   // Command handling + Checking if there's no other verif
   if (msg.content.startsWith('~verif') && (active_captcha === 0)) {
     // Noob var
-    const good_c = msg.guild.channels.cache.find(ch => ch.name === cfg.captchan);
+    const good_c = msg.guild.channels.cache.find(ch => ch.name === config.captchan);
 
     // In case it's not in the good channel
     if (msg.channel.id !== good_c.id) {
