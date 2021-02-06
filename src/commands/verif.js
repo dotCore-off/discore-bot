@@ -52,12 +52,6 @@ exports.run = (bot, msg, args) => {
 
         // If time has expired
         if (has_exp !== 0) { return; }
-
-        // If it's not the right person
-        if (user.id !== m.author.id) {
-            m.delete({ timeout : 10 }).catch(console.error);
-          return;
-        }
  
         // If the entered code is wrong
         if (!m.content.startsWith(picked_code) && user.id === m.author.id || !m.content && has_exp !== 0 && attempts !== 1 && user.id === m.author.id) {
