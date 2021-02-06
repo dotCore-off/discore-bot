@@ -94,8 +94,8 @@ exports.run = (bot, msg, args) => {
   })}
 
   // In case there's already an opened captcha
-  if (message.content.startsWith('~verif') && (active_captcha !== 0)) {
-    message.delete({ timeout : 10 }).catch(console.error);
+  if (msg.content.startsWith('~verif') && (active_captcha !== 0)) {
+    msg.delete({ timeout : 10 }).catch(console.error);
   }
 }
 
