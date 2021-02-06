@@ -4,7 +4,7 @@ const config = require('../../config.json');
 var active_captcha = 0;
 
 // Verif function
-exports.run = (bot, msg, args) => {
+exports.run = (bot, message, args) => {
   // Command handling + Checking if there's no other verif
   if (message.content.startsWith('~verif') && (active_captcha === 0)) {
     // Noob var
