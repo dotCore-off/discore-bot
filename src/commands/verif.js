@@ -22,7 +22,7 @@ module.exports.run = (bot, msg, args) => {
 
     // Noob vars
     const random_pick = Math.floor(Math.random() * Math.floor(9));
-    const c_author = msg.author.tag;
+    const c_author = msg.author.id;
     var has_exp = 0;
     var codes = ["057VCX", "W51T5W", "1Z6K2L", "D447ZX", "705SWR", "S2JJ33", "19KVR6", "SJ49I8", "5Z33RC", "281KPT", "70GI0S", "O1HK59", "6ZU11Z", "S1B3I5", "8R5T7L", "857KCZ", "M5E90A", "Q6Y79D", "76SH4T", "O52NI3", "WQ66H5", "J1G5K2", "O06HZ5", "39UHS0", "20Z0FW", "8SK38R", "V7DL26", "ZYP053", "3MHE63"];
     var picked_code = codes[random_pick];
@@ -46,7 +46,7 @@ module.exports.run = (bot, msg, args) => {
       setTimeout(expire_code, 30000);
 
       // Attempts listener
-      bot.on('message', async (msg, user) => {
+      bot.on('message', async msg => {
         // Add an active captcha
         active_captcha++;
 
@@ -54,13 +54,13 @@ module.exports.run = (bot, msg, args) => {
         if (has_exp !== 0) { return; }
 
         // If it's not the right person
-        if (user.id !== msg.author.id) {
+        if (msg.author.id !== c_author) {
           msg.delete({ timeout : 10 }).catch(console.error);
           return;
         }
  
         // If the entered code is wrong
-        if (!msg.content.startsWith(picked_code) && user.id === msg.author.id || !msg.content && has_exp !== 0 && attempts !== 1 && user.id === msg.author.id) {
+        if (!msg.content.startsWith(picked_code) && msg.author.id === c_author || !msg.content && has_exp !== 0 && attempts !== 1 && msg.author.id === c_author) {
           // Delete user attempt
           msg.delete({ timeout : 10 }).catch(console.error);
           
@@ -81,7 +81,7 @@ module.exports.run = (bot, msg, args) => {
         }
 
         // If everything is right - Proceed
-        if (msg.content.startsWith(picked_code) && has_exp === 0 && attempts !== 0 && user.id === msg.author.id) {
+        if (msg.content.startsWith(picked_code) && has_exp === 0 && attempts !== 0 && msg.author.id === c_author) {
           // Delete user attempt
           msg.delete({ timeout : 10 }).catch(console.error);
           // Edit code embed + Delete with a timeout
