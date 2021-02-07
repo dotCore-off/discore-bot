@@ -54,13 +54,13 @@ module.exports.run = (bot, msg, args) => {
         if (has_exp !== 0) { return; }
 
         // If it's not the right person
-        if (msg.author.id !== c_author) {
+        if (msg.author.id !== c_author && msg.channel.id === good_c.id) {
           msg.delete({ timeout : 10 }).catch(console.error);
           return;
         }
  
         // If the entered code is wrong
-        if (!msg.content.startsWith(picked_code) && msg.author.id === c_author || !msg.content && has_exp !== 0 && attempts !== 1 && msg.author.id === c_author) {
+        if (!msg.content.startsWith(picked_code) && msg.author.id === c_author && msg.channel.id === good_c.id || !msg.content && has_exp !== 0 && attempts !== 1 && msg.author.id === c_author && msg.channel.id === good_c.id) {
           // Delete user attempt
           msg.delete({ timeout : 10 }).catch(console.error);
           
@@ -81,7 +81,7 @@ module.exports.run = (bot, msg, args) => {
         }
 
         // If everything is right - Proceed
-        if (msg.content.startsWith(picked_code) && has_exp === 0 && attempts !== 0 && msg.author.id === c_author) {
+        if (msg.content.startsWith(picked_code) && has_exp === 0 && attempts !== 0 && msg.author.id === c_author && msg.channel.id === good_c.id) {
           // Delete user attempt
           msg.delete({ timeout : 10 }).catch(console.error);
           // Edit code embed + Delete with a timeout
