@@ -22,7 +22,7 @@ exports.run = (bot, msg, args) => {
 
     // First embed
     const help_embed = new Discord.MessageEmbed()
-      .setAuthor(`Requested by ❱ ${m_author}`, `${msg.author.displayAvatarURL(format = 'png', dynamic = true)}`)
+      .setAuthor(`Help asked by ❱ ${m_author}`, `${msg.author.displayAvatarURL(format = 'png', dynamic = true)}`)
       .setTitle('📜 ❱ Help guide')
       .setColor(0x3898FF)
       .setDescription("**__Welcome on my help guide__**\nHere's how the navigation system works :\n")
@@ -70,7 +70,7 @@ exports.run = (bot, msg, args) => {
         // Reaction checking #3 - If he accepted the tutorial lol
         if (reaction.emoji.name === '🆗' && user.id !== bot.user.id && user.id === msg.author.id) {
           // We totally delete the 🆗 reaction
-          msg.reactions.cache.get(emoji => emoji.name === '🆗').remove().catch(console.error);
+          this.remove().catch(console.error);
 
           // Main function
           bot.on('messageReactionAdd', async (reaction, user) => {
