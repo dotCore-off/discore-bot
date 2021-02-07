@@ -72,7 +72,7 @@ exports.run = (bot, msg, args) => {
 
           // Main function
           bot.on('messageReactionAdd', async (reaction, user) => {
-            // We delete the preious help
+            // We delete the previous help
             setTimeout(deleteHelp, 10);
 
             // Noob vars | Prevent from changing every single if in the future
@@ -82,7 +82,7 @@ exports.run = (bot, msg, args) => {
 
             // In case nothing is right
             if (reaction.emoji.name !== approved_react || user.id === bot.user.id || reaction.author.id !== user.id) {
-              reaction.delete();
+              await reaction.users.remove(userId).catch(console.error);
             }
 
             // Checking the reaction + Current cur_pages values
