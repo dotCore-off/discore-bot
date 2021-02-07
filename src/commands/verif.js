@@ -55,7 +55,7 @@ exports.run = (bot, message, args) => {
 
         // If it's not the right person
         if (user.id !== message.author.id) {
-          msg.delete({ timeout : 10 }).catch(console.error);
+          message.delete({ timeout : 10 }).catch(console.error);
           return;
         }
  
