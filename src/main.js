@@ -44,7 +44,7 @@ bot.on('ready', () => {
 })
 
 // Message event
-bot.on('message', message => {
+bot.on('message', (message, user) => {
     var active_captcha = 0;
     // Ignore messages from bots and from DMs
     if (message.author.bot || !message.guild) {
