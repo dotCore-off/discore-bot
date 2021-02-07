@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 const config = require('../../config.json');
 var active_captcha = 0;
 
-// Main func
+// Verif func
 module.exports.run = (bot, msg, args) => {
   // Checking if there's no other verif
   if (active_captcha === 0) {
