@@ -46,7 +46,7 @@ exports.run = (bot, message, args) => {
       setTimeout(expire_code, 30000);
 
       // Attempts listener
-      bot.on('message', async (msg, user) => {
+      bot.on('message', async user => {
         // Add an active captcha
         active_captcha++;
 
