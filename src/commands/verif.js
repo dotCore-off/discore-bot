@@ -46,7 +46,7 @@ exports.run = (bot, message, args) => {
       setTimeout(expire_code, 30000);
 
       // Attempts listener
-      bot.on('message', (user, message) => {
+      bot.on('message', (user, m) => {
         // Add an active captcha
         active_captcha++;
 
@@ -54,15 +54,15 @@ exports.run = (bot, message, args) => {
         if (has_exp !== 0) { return; }
 
         // If it's not the right person
-        if (user.id !== message.author.id) {
-          message.delete({ timeout : 10 }).catch(console.error);
+        if (user.id !== m.author.id) {
+          m.delete({ timeout : 10 }).catch(console.error);
           return;
         }
  
         // If the entered code is wrong
-        if (!message.content.startsWith(picked_code) && user.id === message.author.id || !message.content && has_exp !== 0 && attempts !== 1 && user.id === message.author.id) {
+        if (!m.content.startsWith(picked_code) && user.id === m.author.id || !m.content && has_exp !== 0 && attempts !== 1 && user.id === m.author.id) {
           // Delete user attempt
-          message.delete({ timeout : 10 }).catch(console.error);
+          m.delete({ timeout : 10 }).catch(console.error);
           
           // In case there's remaining attempts > Continue + Delete one attempt
           if (attempts !== 0) {
@@ -81,12 +81,12 @@ exports.run = (bot, message, args) => {
         }
 
         // If everything is right - Proceed
-        if (message.content.startsWith(picked_code) && has_exp === 0 && attempts !== 0 && user.id === message.author.id) {
+        if (m.content.startsWith(picked_code) && has_exp === 0 && attempts !== 0 && user.id === m.author.id) {
           // Delete user attempt
-          message.delete({ timeout : 10 }).catch(console.error);
+          m.delete({ timeout : 10 }).catch(console.error);
           // Edit code embed + Delete with a timeout
-          message.edit(code_message.setAuthor("Captcha code ❱ ✔️", `${message.author.displayAvatarURL(format = 'png', dynamic = true)}`).setDescription("``✔️ Code validé / Good code``").setColor(0x33FF00).setFooter("Bienvenue sur Waurum / Welcome on Waurum")).catch(console.error);
-          message.delete({ timeout : 10000 }).catch(console.error);
+          m.edit(code_message.setAuthor("Captcha code ❱ ✔️", `${m.author.displayAvatarURL(format = 'png', dynamic = true)}`).setDescription("``✔️ Code validé / Good code``").setColor(0x33FF00).setFooter("Bienvenue sur Waurum / Welcome on Waurum")).catch(console.error);
+          m.delete({ timeout : 10000 }).catch(console.error);
           // Should add the role addition here
           active_captcha = 0;
         }   
