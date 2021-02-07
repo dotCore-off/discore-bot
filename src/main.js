@@ -62,7 +62,7 @@ bot.on('message', message => {
     // Command handling + Checking if there's no other verif
     if (message.content.startsWith('~verif') && (active_captcha === 0)) {
         // Noob var
-        const good_c = message.guild.channels.cache.find(ch => ch.name === cfg.captchan);
+        const good_c = message.guild.channels.cache.find(ch => ch.name === config.captchan);
 
         // In case it's not in the good channel
         if (message.channel.id !== good_c.id) {
