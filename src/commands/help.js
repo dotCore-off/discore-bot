@@ -12,6 +12,7 @@ exports.run = (bot, msg, args) => {
 
     // Noob vars
     var cur_pages = 1;
+    const m_author = msg.author.tag;
 
     // Delete function
     function deleteHelp() {
@@ -21,6 +22,7 @@ exports.run = (bot, msg, args) => {
 
     // First embed
     const help_embed = new Discord.MessageEmbed()
+      .setAuthor(`Requested by ❱ ${m_author}`, `${msg.author.displayAvatarURL(format = 'png', dynamic = true)}`)
       .setTitle('📜 ❱ Help guide')
       .setColor(0x3898FF)
       .setDescription("**__Welcome on my help guide__**\nHere's how the navigation system works :\n")
