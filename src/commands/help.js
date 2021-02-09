@@ -85,10 +85,11 @@ exports.run = (bot, msg, args) => {
 
             // Reaction listener
             bot.on('messageReactionAdd', async (reaction, user) => {
+              var a = 1;
               // Navigation loop
-              while (reaction.emoji.name !== '❌') {
+              while (a !== 0) {
                 // In case nothing is right
-                if (reaction.emoji.name !== approved_react || user.id === bot.user.id || reaction.emoji.name === '⬅️' && cur_pages === min || reaction.emoji.name === '➡️' && cur_pages === max) {
+                if (reaction.emoji.name !== approved_react[1] || reaction.emoji.name !== approved_react[2] || reaction.emoji.name !== approved_react[3] || user.id === bot.user.id || reaction.emoji.name === '⬅️' && cur_pages === min || reaction.emoji.name === '➡️' && cur_pages === max) {
                   // We delete the reaction + Return nothing
                   await reaction.users.remove(userId).catch(console.error);
                   return;
@@ -113,6 +114,7 @@ exports.run = (bot, msg, args) => {
                   m.delete({ timeout : 5000 }).catch(console.error);
                   // We re-init the var
                   active_help = 0;
+                  a = 0;
                 }
 
                 if (cur_pages === 1) {
