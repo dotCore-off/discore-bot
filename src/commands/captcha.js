@@ -25,14 +25,11 @@ exports.run = (bot, msg, args) => {
     // Delete command
     msg.delete({ timeout : 10 }).catch(console.error);
 
-    // Noob vars
-    const id_d = "295993693440180224";
-
     // First check - Permission
     if (!msg.member.hasPermission(["ADMINISTRATOR"])) return; 
 
     // Second check - User
-    if (msg.author.id !== id_d) return;
+    if (msg.author.id !== config.administrator_id) return;
 
 
     const embed = new Discord.MessageEmbed()
