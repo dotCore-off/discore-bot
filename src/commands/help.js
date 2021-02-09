@@ -53,7 +53,7 @@ exports.run = (bot, msg, args) => {
         // Reaction checking #2 - If he didn't accepted with 🆗
         if (reaction.emoji.name === '⬅️' && user.id !== bot.user.id || reaction.emoji.name === '➡️' && user.id !== bot.user.id || reaction.emoji.name !== '🆗' && reaction.emoji.name !== '❌' && user.id !== bot.user.id) {
           await reaction.users.remove(userId).catch(console.error);
-          c.edit(help_embed.setFooter(`You have to hit 🆗 reaction first !`, "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png").setColor(0xFF3300)).catch(console.error);
+          c.edit(help_embed.setFooter(`You have to hit 🆗 reaction first !`, config.author_icon).setColor(0xFF3300)).catch(console.error);
         }
 
         // Reaction checking #3 - If he accepted the tutorial lol
@@ -73,7 +73,7 @@ exports.run = (bot, msg, args) => {
             .addField("Reaction ❱ ➡️", "> Next page")
             .addField("Reaction ❱ ⬅️", "> Previous page")
             .addField("Reaction ❱ ❌", "> Exit")
-            .setFooter(`❱ Page ${cur_pages} / ${max}`, "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")
+            .setFooter(`❱ Page ${cur_pages} / ${max}`, config.author_icon)
           msg.channel.send(main_embed).then(m => {
             // Noob var
             var i;
@@ -116,7 +116,7 @@ exports.run = (bot, msg, args) => {
                 if (reaction.emoji.name === '❌' && user.id !== bot.user.id) {
                   await reaction.users.remove(userId).catch(console.error);
                   // We delete the help menu
-                  m.edit(main_embed.setFooter('Got it ! Help message will shutdown in 5 seconds...', "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")).catch(console.error);
+                  m.edit(main_embed.setFooter('Got it ! Help message will shutdown in 5 seconds...', config.author_icon)).catch(console.error);
                   m.delete({ timeout : 5000 }).catch(console.error);
                   // We re-init the var
                   active_help = 0;
@@ -126,15 +126,15 @@ exports.run = (bot, msg, args) => {
 
                 // Help pages
                 if (cur_pages === 1) {
-                  m.edit(main_embed.setDescription("**__Administration commands__**").setFooter(`❱ Page ${cur_pages} / ${max}`, "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")).catch(console.error);       
+                  m.edit(main_embed.setDescription("**__Administration commands__**").setFooter(`❱ Page ${cur_pages} / ${max}`, config.author_icon)).catch(console.error);       
                 }
 
                 if (cur_pages === 2) {
-                  m.edit(main_embed.setDescription("**__Fun commands__**").setFooter(`❱ Page ${cur_pages} / ${max}`, "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")).catch(console.error);       
+                  m.edit(main_embed.setDescription("**__Fun commands__**").setFooter(`❱ Page ${cur_pages} / ${max}`, config.author_icon)).catch(console.error);       
                 }
 
                 if (cur_pages === 3) {
-                  m.edit(main_embed.setDescription("**__Fun commands__**").setFooter(`❱ Page ${cur_pages} / ${max}`, "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")).catch(console.error);       
+                  m.edit(main_embed.setDescription("**__Fun commands__**").setFooter(`❱ Page ${cur_pages} / ${max}`, config.author_icon)).catch(console.error);       
                 } 
               }           
             })

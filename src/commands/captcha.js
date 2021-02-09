@@ -16,8 +16,8 @@ exports.run = (bot, msg, args) => {
       .setAuthor("Captcha by Waurum™️", "https://cdn.discordapp.com/icons/720069155465986134/b6337be18611b607ac9bf61b916e0531.png", "https://discord.gg/ZKEdt6e")
       .setColor(0xFF3300)
       .setDescription(`You must use this command in channel > ${captcha_chan}`)
-      .setFooter("Made by dotCore 💙", "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")
-      msg.channel.send(embed).catch(console.error).then(m => m.delete({ timeout : 10000 }).catch(console.error));
+      .setFooter(config.trademark, config.author_icon)
+    msg.channel.send(embed).catch(console.error).then(m => m.delete({ timeout : 10000 }).catch(console.error));
   }
 
   // If channel is correct
@@ -40,8 +40,8 @@ exports.run = (bot, msg, args) => {
       .setColor(0x3898FF)
       .addField(":flag_fr: ❱ Vérification", "> Veuillez entrez la commande ``~verif`` puis recopiez le code qui vous est donné dans les 30 secondes !")
       .addField(":flag_gb: ❱ Verification", "> Please use the ``~verif`` command then copy and send the given code in this channel within next 30 seconds !")
-      .setFooter("Made by dotCore 💙", "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")
-      msg.channel.send(embed).catch(console.error);
+      .setFooter(config.trademark, config.author_icon)
+    msg.channel.send(embed).catch(console.error);
   }
 }
 

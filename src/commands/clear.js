@@ -18,7 +18,7 @@ exports.run = (bot, msg, args) => {
         .setTitle("🧼 ❱ Clear system")
         .setColor(0xFF3300)
         .addField("``❌ An error occured !``", "> You must enter an amount")
-        .setFooter("Made by dotCore 💙", "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")
+        .setFooter(config.trademark, config.author_icon)
       return msg.channel.send(embed).catch(console.error)
 
       // Delete embed
@@ -32,7 +32,7 @@ exports.run = (bot, msg, args) => {
         .setTitle("🧼 ❱ Clear system")
         .setColor(0xFF3300)
         .addField("``❌ An error occured !``", "> You must enter a valid number")
-        .setFooter("Made by dotCore 💙", "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")
+        .setFooter(config.trademark, config.author_icon)
       return msg.channel.send(embed).catch(console.error)
 
       // Delete embed
@@ -46,7 +46,7 @@ exports.run = (bot, msg, args) => {
         .setTitle("🧼 ❱ Clear system")
         .setColor(0xFF3300)
         .addField("``❌ An error occured !``", "> You can't delete more than 100 messages")
-        .setFooter("Made by dotCore 💙", "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")
+        .setFooter(config.trademark, config.author_icon)
       return msg.channel.send(embed).catch(console.error)
 
       // Delete embed
@@ -60,7 +60,7 @@ exports.run = (bot, msg, args) => {
         .setTitle("🧼 ❱ Clear system")
         .setColor(0xFF3300)
         .addField("``❌ An error occured !``", "> You have to delete at least 1 message")
-        .setFooter("Made by dotCore 💙", "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")
+        .setFooter(config.trademark, config.author_icon)
       return msg.channel.send(embed).catch(console.error)
 
       // Delete embed
@@ -75,8 +75,8 @@ exports.run = (bot, msg, args) => {
       .setTitle("🧼 ❱ Clear system")
       .setColor(0x33FF00)
       .addField("``✔️ Clear done !``", `> You have deleted ${amount} messages !`)
-      .setFooter("Made by dotCore 💙", "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")
-      msg.channel.send(embed).catch(console.error)
+      .setFooter(config.trademark, config.author_icon)
+    msg.channel.send(embed).catch(console.error)
 
     // Delete embed
     .then(m => { m.delete({ timeout : 5000 }) }).catch(console.error);

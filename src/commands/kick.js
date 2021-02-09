@@ -14,7 +14,7 @@ exports.run = (bot, msg, args) => {
         .setTitle("⛔️ ❱ Kick system")
         .setColor(0xFF3300)
         .addField("``❌ An error occured !``", "> You don't have the permission")
-        .setFooter("Made by dotCore 💙", "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")
+        .setFooter(config.trademark, config.author_icon)
       return msg.channel.send(embed)
 
       // Delete embed
@@ -37,7 +37,7 @@ exports.run = (bot, msg, args) => {
         .setTitle("⛔️ ❱ Kick system")
         .setColor(0xFF3300)
         .addField("``❌ An error occured !``", "> You must mention a user")
-        .setFooter("Made by dotCore 💙", "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")
+        .setFooter(config.trademark, config.author_icon)
       return msg.channel.send(embed)
 
       // Delete embed
@@ -54,7 +54,7 @@ exports.run = (bot, msg, args) => {
         .setTitle("⛔️ ❱ Kick system")
         .setColor(0xFF3300)
         .addField("``❌ An error occured !``", "> You must put a reason")
-        .setFooter("Made by dotCore 💙", "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")
+        .setFooter(config.trademark, config.author_icon)
       return msg.channel.send(embed)
 
       // Delete embed
@@ -71,7 +71,7 @@ exports.run = (bot, msg, args) => {
         .setTitle("⛔️ ❱ Kick system")
         .setColor(0xFF3300)
         .addField("``❌ An error occured !``", "> You can't kick this user")
-        .setFooter("Made by dotCore 💙", "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")
+        .setFooter(config.trademark, config.author_icon)
       return msg.channel.send(embed)
 
       // Delete embed
@@ -88,7 +88,7 @@ exports.run = (bot, msg, args) => {
         .setTitle("⛔️ ❱ Kick system")
         .setColor(0xFF3300)
         .addField("``❌ An error occured !``", "> I don't have the permission")
-        .setFooter("Made by dotCore 💙", "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")
+        .setFooter(config.trademark, config.author_icon)
       return msg.channel.send(embed)
 
       // Delete embed
@@ -106,7 +106,7 @@ exports.run = (bot, msg, args) => {
         .setColor(0x3898FF)
         .setDescription(`Do you want to kick ❱ __${kickMember.user.tag}__ ?`)
         .addField("``❱ ✅ | ❌``", "> Yes | No")
-        .setFooter("Made by dotCore 💙", "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")
+        .setFooter(config.trademark, config.author_icon)
     // Send the embed + Add reactions
     msg.channel.send(embed).then(c => {
       // Create ✅ reaction
@@ -133,7 +133,7 @@ exports.run = (bot, msg, args) => {
               .setTitle("⛔️ ❱ Kick system")
               .setColor(0x33FF00)
               .setDescription(`**__${kickMember.user.tag}__** ❱ Successfully kicked.`)
-              .setFooter("Made by dotCore 💙", "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")
+              .setFooter(config.trademark, config.author_icon)
             // Send embed + Delete it
             message.channel.send(embeded).then(m => { m.delete({ timeout : 10000 }) });
 
@@ -145,7 +145,7 @@ exports.run = (bot, msg, args) => {
               .addField("⚙️ ❱ Kicked by :", message.author)
               .addField("📜 ❱ Reason :", reason)
               .addField("📆 ❱ Date :", message.createdAt.toLocaleString())
-              .setFooter("Made by dotCore 💙", "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")
+              .setFooter(config.trademark, config.author_icon)
             // Log channel
             const channel = message.guild.channels.cache.find(ch => ch.name === '📟┃logs-waurum');
             // Send log embed

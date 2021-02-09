@@ -31,7 +31,7 @@ exports.run = (bot, msg, args) => {
         .setTitle("📡 ❱ Ping system")
         .setColor(0xFF3300)
         .addField("``❌ An error occured !``", `> You have to be at least a Member to ping the bot`)
-        .setFooter("Made by dotCore 💙", "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")
+        .setFooter(config.trademark, config.author_icon)
       // Send embed + Delete it with timeout
       return msg.channel.send(embed).then(m => { m.delete({ timeout : 10000 }) }).catch(console.error);    
     }
@@ -42,7 +42,7 @@ exports.run = (bot, msg, args) => {
       .setAuthor(`Requested by ❱ ${m_author}`, `${msg.author.displayAvatarURL(format = 'png', dynamic = true)}`)
       .setColor(0x3898FF)
       .setDescription("> Please, allow up to 5 seconds for ping calculation...")
-      .setFooter("Made by dotCore 💙", "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")
+      .setFooter(config.trademark, config.author_icon)
     // Send embed
     msg.channel.send(ping_message).then((m) => {
       // Ping and edit function

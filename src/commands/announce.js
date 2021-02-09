@@ -28,7 +28,7 @@ exports.run = (bot, msg, args) => {
         .setColor(0xFF3300)
         .addField("``❌ An error occured !``", "> Please, provide a channel ID")
         .addField("``✔️ Command syntax :``", "> ~announce **ChannelID** **TimeInSeconds** **Content**")
-        .setFooter("Made by dotCore 💙", "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")
+        .setFooter(config.trademark, config.author_icon)
       return msg.channel.send(embed).catch(console.error)
           
       // Delete embed
@@ -42,7 +42,7 @@ exports.run = (bot, msg, args) => {
         .setColor(0xFF3300)
         .addField("``❌ An error occured !``", "> Please, provide a timer")
         .addField("``✔️ Command syntax :``", "> ~announce **ChannelID** **TimeInSeconds** **Content**")
-        .setFooter("Made by dotCore 💙", "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")
+        .setFooter(config.trademark, config.author_icon)
       return msg.channel.send(embed).catch(console.error)
           
       // Delete embed
@@ -56,7 +56,7 @@ exports.run = (bot, msg, args) => {
         .setColor(0xFF3300)
         .addField("``❌ An error occured !``", "> Please, provide a message content")
         .addField("``✔️ Command syntax :``", "> ~announce **ChannelID** **TimeInSeconds** **Content**")
-        .setFooter("Made by dotCore 💙", "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")
+        .setFooter(config.trademark, config.author_icon)
       return msg.channel.send(embed).catch(console.error)
           
       // Delete embed
@@ -69,7 +69,7 @@ exports.run = (bot, msg, args) => {
         .setTitle("🔔 ❱ Announcement system")
         .setColor(0xFF3300)
         .addField("``❌ An error occured !``", "> You don't have the right permission to use this")
-        .setFooter("Made by dotCore 💙", "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")
+        .setFooter(config.trademark, config.author_icon)
       return msg.channel.send(embed).catch(console.error)
           
       // Delete embed
@@ -85,8 +85,8 @@ exports.run = (bot, msg, args) => {
       .addField("Requested channel :", `${a_channel}`)
       .addField("Posted at :", `${dformat}`)
       .addField("Will be posted in :", `${timer} seconds`)
-      .setFooter("Made by dotCore 💙", "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")
-    const logs_channel = msg.guild.channels.cache.find(ch => ch.name === config.logschan);
+      .setFooter(config.trademark, config.author_icon)
+      const logs_channel = msg.guild.channels.cache.find(ch => ch.name === config.logschan);
 
     // Logs edition function
     function logs_edition() {
@@ -103,7 +103,7 @@ exports.run = (bot, msg, args) => {
         .setAuthor("Waurum - Announcement", "https://cdn.discordapp.com/avatars/788195332630511628/6bae2b5d4380d6963cecc9f2bb5865b2.png", "https://discord.gg/ZKEdt6e")
         .setColor(0x3898FF)
         .setDescription(`${content}`)
-        .setFooter("Made by dotCore 💙", "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")
+        .setFooter(config.trademark, config.author_icon)
       a_channel.send(embed).catch(console.error);
     }
 

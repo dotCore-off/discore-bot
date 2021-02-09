@@ -17,7 +17,7 @@ exports.run = (bot, msg, args) => {
         .setTitle("❤️ ❱ Love system")
         .setColor(0xFF3300)
         .addField("``❌ An error occured !``", "> You must mention a user")
-        .setFooter("Made by dotCore 💙", "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")
+        .setFooter(config.trademark, config.author_icon)
       return msg.channel.send(embed) 
       .then(m => { m.delete({ timeout : 10000 }) });
     }
@@ -32,7 +32,7 @@ exports.run = (bot, msg, args) => {
         .setTitle("❤️ ❱ Love system")
         .setColor(0xFF3300)
         .addField("``❌ An error occured !``", "> Egocentric ❱ Level Up !")
-        .setFooter("Made by dotCore 💙", "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")
+        .setFooter(config.trademark, config.author_icon)
       return msg.channel.send(embed) 
 
       // Delete embed
@@ -50,7 +50,7 @@ exports.run = (bot, msg, args) => {
     // Love embed
     const embed = new Discord.MessageEmbed()
       .setAuthor(`❤️ ❱ Love system`,`${loved.displayAvatarURL(format = 'png', dynamic = true)}`)
-      .setFooter("Made by dotCore 💙", "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")
+      .setFooter(config.trademark, config.author_icon)
       .setColor("#BE56CA")
       .addField(`Wow, ${loved.tag} loves ${msg.member.displayName} this much :`,
       `> 💟 ❱ ${Math.floor(love)}%\n\nLove rate : ${loveLevel}`);
