@@ -31,7 +31,7 @@ exports.run = (bot, msg, args) => {
     // Second check - User
     if (msg.author.id !== config.administrator_id) return;
 
-
+    // Captcha Embed
     const embed = new Discord.MessageEmbed()
       .setAuthor("Captcha by Waurum™️", "https://cdn.discordapp.com/icons/720069155465986134/b6337be18611b607ac9bf61b916e0531.png", "https://discord.gg/ZKEdt6e")
       .setColor(0x3898FF)
