@@ -25,15 +25,6 @@ exports.run = (bot, msg, args) => {
       .addField("Reaction ❱ ❌", "> Exit")
       .setFooter("❱ Hit 🆗 to start browsing", "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")
     msg.channel.send(help_embed).then(c => {
-
-      // Delete function
-      function deleteHelp() {
-        // We edit the embed footer
-        c.edit(help_embed.setFooter('Got it ! Help message will shutdown in 5 seconds...', "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png").setColor(0xFF3300)).catch(console.error);
-        // We delete the embed
-        c.delete({ timeout : 5000 });
-      }
-
       // Create ➡️ / ⬅️ / ❌ / 🆗 reactions
       c.react('⬅️').catch(console.error);
       c.react('➡️').catch(console.error);
@@ -75,45 +66,44 @@ exports.run = (bot, msg, args) => {
           const max = 3;
           var approved_react = ["⬅️", "➡️", "❌"];
 
-            // If we're on the first page
-            if (cur_pages === 1) {
-              const main_embed = new Discord.MessageEmbed()
-                .setTitle('📜 ❱ Help guide')
-                .setColor(0x3898FF)
-                .setDescription("**__Administration commands__**")
-                .addField("Reaction ❱ ➡️", "> Next page")
-                .addField("Reaction ❱ ⬅️", "> Previous page")
-                .addField("Reaction ❱ ❌", "> Exit")
-                .setFooter(`❱ Page ${cur_pages} / ${max}`, "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")
-              msg.channel.send(main_embed).catch(console.error);
-            }
+          // If we're on the first page
+          if (cur_pages === 1) {
+            const main_embed = new Discord.MessageEmbed()
+              .setTitle('📜 ❱ Help guide')
+              .setColor(0x3898FF)
+              .setDescription("**__Administration commands__**")
+              .addField("Reaction ❱ ➡️", "> Next page")
+              .addField("Reaction ❱ ⬅️", "> Previous page")
+              .addField("Reaction ❱ ❌", "> Exit")
+              .setFooter(`❱ Page ${cur_pages} / ${max}`, "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")
+            msg.channel.send(main_embed).catch(console.error);
+          }
 
-            // In case nothing is right
-            if (reaction.emoji.name !== approved_react || user.id === bot.user.id || reaction.author.id !== user.id || reaction.emoji.name === '⬅️' && cur_pages === min || reaction.emoji.name === '➡️' && cur_pages === max) {
-              // We delete the reaction + Return nothing
-              await reaction.users.remove(userId).catch(console.error);
-              return;
-            }
+          // In case nothing is right
+          if (reaction.emoji.name !== approved_react || user.id === bot.user.id || reaction.author.id !== user.id || reaction.emoji.name === '⬅️' && cur_pages === min || reaction.emoji.name === '➡️' && cur_pages === max) {
+            // We delete the reaction + Return nothing
+            await reaction.users.remove(userId).catch(console.error);
+            return;
+          }
 
-            // Checking the reaction + Current cur_pages values
-            if (reaction.emoji.name === '⬅️' && user.id !== bot.user.id && cur_pages !== min) {
-              // We go to the previous page
-              cur_pages = cur_pages - 1;
-            }
+          // Checking the reaction + Current cur_pages values
+          if (reaction.emoji.name === '⬅️' && user.id !== bot.user.id && cur_pages !== min) {
+            // We go to the previous page
+            cur_pages = cur_pages - 1;
+          }
 
-            // Checking the reaction + Current cur_pages values
-            if (reaction.emoji.name === '➡️' && user.id !== bot.user.id && cur_pages !== max) {
-              // We go to the next page
-              cur_pages = cur_pages + 1;
-            }
+          // Checking the reaction + Current cur_pages values
+          if (reaction.emoji.name === '➡️' && user.id !== bot.user.id && cur_pages !== max) {
+            // We go to the next page
+            cur_pages = cur_pages + 1;
           }
         }
       })
-
-      // We re-init needed vars to prevent some issues
-      active_help = 0;
-      cur_pages = 1;
-  })}
+    })
+  }
+  // We re-init needed vars to prevent some issues
+  active_help = 0;
+  cur_pages = 1;
 
   // If there's already an help menu
   if (active_help !== 0) {
