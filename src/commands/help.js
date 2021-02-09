@@ -66,18 +66,20 @@ exports.run = (bot, msg, args) => {
           const max = 3;
           var approved_react = ["⬅️", "➡️", "❌"];
 
-          // If we're on the first page
-          if (cur_pages === 1) {
-            const main_embed = new Discord.MessageEmbed()
-              .setTitle('📜 ❱ Help guide')
-              .setColor(0x3898FF)
-              .setDescription("**__Administration commands__**")
-              .addField("Reaction ❱ ➡️", "> Next page")
-              .addField("Reaction ❱ ⬅️", "> Previous page")
-              .addField("Reaction ❱ ❌", "> Exit")
-              .setFooter(`❱ Page ${cur_pages} / ${max}`, "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")
-            msg.channel.send(main_embed).catch(console.error);
-          }
+          const main_embed = new Discord.MessageEmbed()
+            .setTitle('📜 ❱ Help guide')
+            .setColor(0x3898FF)
+            .setDescription("**__Administration commands__**")
+            .addField("Reaction ❱ ➡️", "> Next page")
+            .addField("Reaction ❱ ⬅️", "> Previous page")
+            .addField("Reaction ❱ ❌", "> Exit")
+            .setFooter(`❱ Page ${cur_pages} / ${max}`, "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")
+          msg.channel.send(main_embed).then(m => {
+            var i;
+            for (i = 0; i < approved_react.length; i++) {
+              m.react(`${approved_react[i]}`);
+            }
+          });
 
           // In case nothing is right
           if (reaction.emoji.name !== approved_react || user.id === bot.user.id || reaction.author.id !== user.id || reaction.emoji.name === '⬅️' && cur_pages === min || reaction.emoji.name === '➡️' && cur_pages === max) {
