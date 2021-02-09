@@ -68,18 +68,33 @@ exports.run = (bot, msg, args) => {
         // Reaction checking #3 - If he accepted the tutorial lol
         if (reaction.emoji.name === '🆗' && user.id !== bot.user.id && user.id === msg.author.id) {
           // We totally delete the first embed
+          c.delete({ timeout : 10 });
 
-          // Main function
-          bot.on('messageReactionAdd', async (reaction, user) => {
+          // Noob vars | Prevent from changing every single if in the future
+          const min = 1;
+          const max = 3;
+          var approved_react = ["⬅️", "➡️", "❌"];
 
-            // Noob vars | Prevent from changing every single if in the future
-            const min = 1;
-            const max = 3;
-            var approved_react = ["⬅️", "➡️", "❌"];
+            // If we're on the first page
+            if (cur_pages === 1) {
+              const main_embed = new Discord.MessageEmbed()
+                .setTitle('📜 ❱ Help guide')
+                .setColor(0x3898FF)
+                .setDescription("**__Administration commands__**")
+                .addField("Reaction ❱ ➡️", "> Next page")
+                .addField("Reaction ❱ ⬅️", "> Previous page")
+                .addField("Reaction ❱ ❌", "> Exit")
+                .setFooter(`❱ Page ${cur_pages} / ${max}`, "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")
+              msg.channel.send(main_embed).catch(console.error);
+              
+          
+            }
 
             // In case nothing is right
-            if (reaction.emoji.name !== approved_react || user.id === bot.user.id || reaction.author.id !== user.id) {
+            if (reaction.emoji.name !== approved_react || user.id === bot.user.id || reaction.author.id !== user.id || reaction.emoji.name === '⬅️' && cur_pages === min || reaction.emoji.name === '➡️' && cur_pages === max) {
+              // We delete the reaction + Return nothing
               await reaction.users.remove(userId).catch(console.error);
+              return;
             }
 
             // Checking the reaction + Current cur_pages values
