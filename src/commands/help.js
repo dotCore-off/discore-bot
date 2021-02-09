@@ -102,21 +102,21 @@ exports.run = (bot, msg, args) => {
                 if (reaction.emoji.name === '⬅️' && user.id !== bot.user.id && cur_pages !== min) {
                   await reaction.users.remove(userId).catch(console.error);
                   // We go to the previous page
-                  cur_pages = cur_pages - 1;
+                  cur_pages--;
                 }
 
                 // Checking the reaction + Current cur_pages values
                 if (reaction.emoji.name === '➡️' && user.id !== bot.user.id && cur_pages !== max) {
                   await reaction.users.remove(userId).catch(console.error);
                   // We go to the next page
-                  cur_pages = cur_pages + 1;
+                  cur_pages++;
                 }
 
                 // Checking the reaction + Current cur_pages values
                 if (reaction.emoji.name === '❌' && user.id !== bot.user.id) {
                   await reaction.users.remove(userId).catch(console.error);
                   // We delete the help menu
-                  m.edit(main_embed).setFooter('Got it ! Help message will shutdown in 5 seconds...', "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png").catch(console.error);
+                  m.edit(main_embed.setFooter('Got it ! Help message will shutdown in 5 seconds...', "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")).catch(console.error);
                   m.delete({ timeout : 5000 }).catch(console.error);
                   // We re-init the var
                   active_help = 0;
