@@ -86,7 +86,7 @@ exports.run = (bot, msg, args) => {
             // Reaction listener
             bot.on('messageReactionAdd', async (reaction, user) => {
               // In case nothing is right
-              if (reaction.emoji.name !== approved_react || user.id === bot.user.id || reaction.author.id !== user.id || reaction.emoji.name === '⬅️' && cur_pages === min || reaction.emoji.name === '➡️' && cur_pages === max) {
+              if (reaction.emoji.name !== approved_react || user.id === bot.user.id || reaction.emoji.name === '⬅️' && cur_pages === min || reaction.emoji.name === '➡️' && cur_pages === max) {
                 // We delete the reaction + Return nothing
                 await reaction.users.remove(userId).catch(console.error);
                 return;
