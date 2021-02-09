@@ -28,12 +28,12 @@ __Or__ :
 - __Contact me on Discord__ ❱ __dotCore#0001__
 
 # [Discore Bot] What's planned 📆
-- Brand new commands
-- New APIs & integrations
-- An easier and bigger configuration file
-- A prettier code
-- A well-made web-panel to configure and control bot
-- An official release on some Discord Bot List's websites
+- Brand __new commands__
+- __New APIs & integrations__
+- An __easier and bigger__ configuration file
+- A __prettier code__
+- A well-made __web-panel__ to configure and control bot
+- An __official release__ on some __Discord Bot List's websites__
 
 
 
