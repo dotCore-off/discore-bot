@@ -1,6 +1,8 @@
 {
     "token": "bot_token",
     "prefix": "!",
+    "trademark": "Made by dotCore 💙",
+    "author_icon": "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png",
     "captchan": "captcha_channel",
     "logschan": "logs_channel"
 }
