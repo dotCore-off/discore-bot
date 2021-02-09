@@ -75,30 +75,57 @@ exports.run = (bot, msg, args) => {
             .addField("Reaction ❱ ❌", "> Exit")
             .setFooter(`❱ Page ${cur_pages} / ${max}`, "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")
           msg.channel.send(main_embed).then(m => {
+            // Noob var
             var i;
+
+            // Reaction loop
             for (i = 0; i < approved_react.length; i++) {
               m.react(`${approved_react[i]}`);
             }
+
+            // Reaction listener
+            bot.on('messageReactionAdd', async (reaction, user) => {
+              // In case nothing is right
+              if (reaction.emoji.name !== approved_react || user.id === bot.user.id || reaction.author.id !== user.id || reaction.emoji.name === '⬅️' && cur_pages === min || reaction.emoji.name === '➡️' && cur_pages === max) {
+                // We delete the reaction + Return nothing
+                await reaction.users.remove(userId).catch(console.error);
+                return;
+              }
+
+              // Checking the reaction + Current cur_pages values
+              if (reaction.emoji.name === '⬅️' && user.id !== bot.user.id && cur_pages !== min) {
+                // We go to the previous page
+                cur_pages = cur_pages - 1;
+              }
+
+              // Checking the reaction + Current cur_pages values
+              if (reaction.emoji.name === '➡️' && user.id !== bot.user.id && cur_pages !== max) {
+                // We go to the next page
+                cur_pages = cur_pages + 1;
+              }
+
+              // Checking the reaction + Current cur_pages values
+              if (reaction.emoji.name === '❌' && user.id !== bot.user.id) {
+                // We delete the help menu
+                m.edit(main_embed).setFooter('Got it ! Help message will shutdown in 5 seconds...', "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png").catch(console.error);
+                m.delete({ timeout : 5000 }).catch(console.error);
+                // We re-init the var
+                active_help = 0;
+              }
+
+              if (cur_pages === 1) {
+                m.edit(main_embed).setDescription("**__Administration commands__**").setFooter(`❱ Page ${cur_pages} / ${max}`, "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png").catch(console.error);       
+              }
+
+              if (cur_pages === 2) {
+                m.edit(main_embed).setDescription("**__Fun commands__**").setFooter(`❱ Page ${cur_pages} / ${max}`, "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png").catch(console.error);       
+              }
+
+              if (cur_pages === 3) {
+                m.edit(main_embed).setDescription("**__Fun commands__**").setFooter(`❱ Page ${cur_pages} / ${max}`, "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png").catch(console.error);       
+              }            
+            })
           });
-
-          // In case nothing is right
-          if (reaction.emoji.name !== approved_react || user.id === bot.user.id || reaction.author.id !== user.id || reaction.emoji.name === '⬅️' && cur_pages === min || reaction.emoji.name === '➡️' && cur_pages === max) {
-            // We delete the reaction + Return nothing
-            await reaction.users.remove(userId).catch(console.error);
-            return;
-          }
-
-          // Checking the reaction + Current cur_pages values
-          if (reaction.emoji.name === '⬅️' && user.id !== bot.user.id && cur_pages !== min) {
-            // We go to the previous page
-            cur_pages = cur_pages - 1;
-          }
-
-          // Checking the reaction + Current cur_pages values
-          if (reaction.emoji.name === '➡️' && user.id !== bot.user.id && cur_pages !== max) {
-            // We go to the next page
-            cur_pages = cur_pages + 1;
-          }
         }
       })
     })
