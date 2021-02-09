@@ -14,12 +14,6 @@ exports.run = (bot, msg, args) => {
     var cur_pages = 1;
     const m_author = msg.author.tag;
 
-    // Delete function
-    function deleteHelp() {
-      // We delete the embed
-      c.delete({ timeout : 10 });
-    }
-
     // First embed
     const help_embed = new Discord.MessageEmbed()
       .setAuthor(`Help asked by ❱ ${m_author}`, `${msg.author.displayAvatarURL(format = 'png', dynamic = true)}`)
@@ -73,14 +67,10 @@ exports.run = (bot, msg, args) => {
 
         // Reaction checking #3 - If he accepted the tutorial lol
         if (reaction.emoji.name === '🆗' && user.id !== bot.user.id && user.id === msg.author.id) {
-          // We totally delete the 🆗 reaction
-          var ok_react = msg.reactions.cache.get('🆗');
-          ok_react.remove().catch(console.error);
+          // We totally delete the first embed
 
           // Main function
           bot.on('messageReactionAdd', async (reaction, user) => {
-            // We delete the previous help
-            setTimeout(deleteHelp, 10);
 
             // Noob vars | Prevent from changing every single if in the future
             const min = 1;
