@@ -89,7 +89,7 @@ exports.run = (bot, msg, args) => {
               // Navigation loop
               while (a !== 0) {
                 // In case nothing is right
-                if (reaction.emoji.name !== approved_react[1] || reaction.emoji.name !== approved_react[2] || reaction.emoji.name !== approved_react[3] || user.id === bot.user.id || reaction.emoji.name === '⬅️' && cur_pages === min || reaction.emoji.name === '➡️' && cur_pages === max) {
+                if (user.id === bot.user.id || reaction.emoji.name === '⬅️' && cur_pages === min || reaction.emoji.name === '➡️' && cur_pages === max) {
                   // We delete the reaction + Return nothing
                   await reaction.users.remove(userId).catch(console.error);
                   return;
@@ -97,18 +97,21 @@ exports.run = (bot, msg, args) => {
 
                 // Checking the reaction + Current cur_pages values
                 if (reaction.emoji.name === '⬅️' && user.id !== bot.user.id && cur_pages !== min) {
+                  await reaction.users.remove(userId).catch(console.error);
                   // We go to the previous page
                   cur_pages = cur_pages - 1;
                 }
 
                 // Checking the reaction + Current cur_pages values
                 if (reaction.emoji.name === '➡️' && user.id !== bot.user.id && cur_pages !== max) {
+                  await reaction.users.remove(userId).catch(console.error);
                   // We go to the next page
                   cur_pages = cur_pages + 1;
                 }
 
                 // Checking the reaction + Current cur_pages values
                 if (reaction.emoji.name === '❌' && user.id !== bot.user.id) {
+                  await reaction.users.remove(userId).catch(console.error);
                   // We delete the help menu
                   m.edit(main_embed).setFooter('Got it ! Help message will shutdown in 5 seconds...', "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png").catch(console.error);
                   m.delete({ timeout : 5000 }).catch(console.error);
