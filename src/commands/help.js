@@ -86,8 +86,6 @@ exports.run = (bot, msg, args) => {
                 .addField("Reaction ❱ ❌", "> Exit")
                 .setFooter(`❱ Page ${cur_pages} / ${max}`, "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")
               msg.channel.send(main_embed).catch(console.error);
-              
-          
             }
 
             // In case nothing is right
@@ -108,7 +106,7 @@ exports.run = (bot, msg, args) => {
               // We go to the next page
               cur_pages = cur_pages + 1;
             }
-          })
+          }
         }
       })
 
