@@ -123,6 +123,8 @@ exports.run = (bot, msg, args) => {
                   a = 0;
                 }
 
+
+                // Help pages
                 if (cur_pages === 1) {
                   m.edit(main_embed.setDescription("**__Administration commands__**").setFooter(`❱ Page ${cur_pages} / ${max}`, "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")).catch(console.error);       
                 }
