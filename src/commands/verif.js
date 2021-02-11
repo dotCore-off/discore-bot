@@ -102,10 +102,10 @@ module.exports.run = (bot, msg, args) => {
   })}
 
   // In case there's already an opened captcha
-  if (active_captcha !== 0) {
+  /* if (active_captcha !== 0) {
     // We delete the command
     msg.delete({ timeout : 10 }).catch(console.error);
-  }
+  }*/
 }
 
 // Verif help
