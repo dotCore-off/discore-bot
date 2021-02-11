@@ -91,7 +91,7 @@ module.exports.run = (bot, msg, args) => {
           m.delete({ timeout : 10000 }).catch(console.error);
 
           // We give the role
-          let verifRole = msg.guild.roles.cache.find(role => role.id == config.verified_role);
+          let verifRole = msg.guild.roles.cache.find(role => role.id == "790181776575692820");
           msg.member.roles.add(verifRole);
 
           // Re-init var
