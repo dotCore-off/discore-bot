@@ -23,6 +23,7 @@ module.exports.run = (bot, msg, args) => {
     // Noob vars
     const random_pick = Math.floor(Math.random() * Math.floor(9));
     const c_author = msg.author.id;
+    const author = msg.author;
     var has_exp = 0;
     var codes = ["057VCX", "W51T5W", "1Z6K2L", "D447ZX", "705SWR", "S2JJ33", "19KVR6", "SJ49I8", "5Z33RC", "281KPT", "70GI0S", "O1HK59", "6ZU11Z", "S1B3I5", "8R5T7L", "857KCZ", "M5E90A", "Q6Y79D", "76SH4T", "O52NI3", "WQ66H5", "J1G5K2", "O06HZ5", "39UHS0", "20Z0FW", "8SK38R", "V7DL26", "ZYP053", "3MHE63"];
     var picked_code = codes[random_pick];
@@ -89,8 +90,8 @@ module.exports.run = (bot, msg, args) => {
           m.delete({ timeout : 10000 }).catch(console.error);
           // We give the role
           let verifRole = msg.guild.roles.cache.find(role => role.id == "790181776575692820");
-          c_author.roles.add(verifRole);
-          
+          author.roles.add(verifRole);
+
           // Re-init var
           active_captcha = 0;
         }   
