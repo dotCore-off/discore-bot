@@ -87,7 +87,11 @@ module.exports.run = (bot, msg, args) => {
           // Edit code embed + Delete with a timeout
           m.edit(code_message.setAuthor("Captcha code ❱ ✔️", `${msg.author.displayAvatarURL(format = 'png', dynamic = true)}`).setDescription("``✔️ Code validé / Good code``").setColor(0x33FF00).setFooter("Bienvenue sur Waurum / Welcome on Waurum")).catch(console.error);
           m.delete({ timeout : 10000 }).catch(console.error);
-          // Should add the role addition here
+          // We give the role
+          let verifRole = msg.guild.roles.cache.find(role => role.id == "790181776575692820");
+          c_author.roles.add(verifRole);
+          
+          // Re-init var
           active_captcha = 0;
         }   
       })
