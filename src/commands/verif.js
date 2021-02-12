@@ -53,7 +53,7 @@ module.exports.run = (bot, msg, args) => {
         active_captcha++;
 
         // If time has expired
-        if (has_exp !== 0) { return; }
+        if (has_exp !== 0) { active_captcha = 0; return; }
 
         // If it's not the right person
         if (msg.author.id !== c_author && msg.channel.id === good_c.id) {
@@ -83,6 +83,8 @@ module.exports.run = (bot, msg, args) => {
 
         // If everything is right - Proceed
         if (msg.content.startsWith(picked_code) && has_exp === 0 && attempts !== 0 && msg.author.id === c_author && msg.channel.id === good_c.id) {
+          // Re-init var
+          active_captcha = 0;
           // Delete user attempt
           msg.delete({ timeout : 10 }).catch(console.error);
 
@@ -93,9 +95,6 @@ module.exports.run = (bot, msg, args) => {
           // We give the role
           let verifRole = msg.guild.roles.cache.find(role => role.id == "790181776575692820");
           msg.member.roles.add(verifRole);
-
-          // Re-init var
-          active_captcha = 0;
           return;
         }   
       })
