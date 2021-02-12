@@ -55,7 +55,7 @@ module.exports.run = (bot, msg, args) => {
       }
  
       // If the entered code is wrong
-      if (!msg.content.startsWith(picked_code) && msg.author.id === c_author && msg.channel.id === good_c.id || !msg.content && has_exp !== 0 && attempts !== 1 && msg.author.id === c_author && msg.channel.id === good_c.id) {
+      if (!msg.content.startsWith(picked_code) && user.id !== bot.user.id && msg.author.id === c_author && msg.channel.id === good_c.id || !msg.content && has_exp !== 0 && attempts !== 1 && msg.author.id === c_author && msg.channel.id === good_c.id) {
         // Delete user attempt
         msg.delete({ timeout : 10 }).catch(console.error);
           
