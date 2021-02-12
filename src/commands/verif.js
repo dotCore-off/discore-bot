@@ -49,7 +49,7 @@ module.exports.run = (bot, msg, args) => {
       if (has_exp !== 0) { return; }
 
       // If it's not the right person
-      if (msg.author.id !== c_author && msg.channel.id === good_c.id) {
+      if (msg.author.id !== c_author && msg.channel.id === good_c.id && !msg.content.startsWith("~verif")) {
         msg.delete({ timeout : 10 }).catch(console.error);
         return;
       }
@@ -81,7 +81,7 @@ module.exports.run = (bot, msg, args) => {
 
         // Edit code embed + Delete with a timeout
         m.edit(code_message.setAuthor("Captcha code ❱ ✔️", `${msg.author.displayAvatarURL(format = 'png', dynamic = true)}`).setDescription("``✔️ Code validé / Good code``").setColor(0x33FF00).setFooter("Bienvenue sur Waurum / Welcome on Waurum")).catch(console.error);
-        m.delete({ timeout : 10000 }).catch(console.error);
+        m.delete({ timeout : 5000 }).catch(console.error);
 
         // We give the role
         let verifRole = msg.guild.roles.cache.find(role => role.id == "790181776575692820");
