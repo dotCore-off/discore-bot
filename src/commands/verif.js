@@ -44,7 +44,7 @@ module.exports.run = (bot, msg, args) => {
     setTimeout(expire_code, 30000);
 
     // Attempts listener
-    bot.on('message', async msg => {
+    bot.on('message', async (msg, user) => {
       // If time has expired
       if (has_exp !== 0) { return; }
 
