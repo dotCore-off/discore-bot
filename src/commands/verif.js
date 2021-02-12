@@ -41,6 +41,7 @@ module.exports.run = (bot, msg, args) => {
         m.edit(code_message.setAuthor("Captcha code ❱ ❌", `${m.author.displayAvatarURL(format = 'png', dynamic = true)}`).setDescription("``❌ Code expiré / Code has expired``").setColor(0xFF3300).setFooter("Veuillez réessayer / Please try again")).catch(console.error);
         m.delete({ timeout : 10000 }).catch(console.error);
         has_exp++;
+        active_captcha = 0;
       }
      
       // Run above func after 30 secs
@@ -77,7 +78,6 @@ module.exports.run = (bot, msg, args) => {
           if (attempts === 0) {
             // Run expire function
             expire_code();
-            active_captcha = 0;
           }
         }
 
@@ -101,11 +101,10 @@ module.exports.run = (bot, msg, args) => {
       })
   })}
 
-  // In case there's already an opened captcha
-  /* if (active_captcha !== 0) {
+  if (active_captcha !== 0) {
     // We delete the command
     msg.delete({ timeout : 10 }).catch(console.error);
-  }*/
+  }
 }
 
 // Verif help

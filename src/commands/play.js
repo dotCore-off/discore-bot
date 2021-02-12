@@ -4,7 +4,7 @@ const config = require('../../config.json');
 const ytdl = require('../../ytdl-core');
 const queue = new Map();
 
-// prout function
+// Play function
 exports.run = (bot, msg, args) => {
 
     const serverQueue = queue.get(msg.guild.id);
@@ -111,7 +111,7 @@ exports.run = (bot, msg, args) => {
     }    
 }
 
-// Help help
+// Play help
 exports.help = {
     name: 'play',
     usage: 'play',
