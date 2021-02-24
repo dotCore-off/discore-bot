@@ -74,7 +74,7 @@ exports.run = (bot, msg, args) => {
           var approved_react = ["⬅️", "➡️", "❌"];
 
           const main_embed = new Discord.MessageEmbed()
-            .setTitle('📜 ❱ Help guide')
+            .setAuthor(`Help asked by ❱ ${whois}`, `${msg.author.displayAvatarURL(format = 'png', dynamic = true)}`)
             .setColor(0x3898FF)
             .setDescription("**__Administration commands__**")
             .addField("Reaction ❱ ➡️", "> Next page")
@@ -137,7 +137,7 @@ exports.run = (bot, msg, args) => {
                 }
 
                 if (cur_pages === 2) {
-                  m.edit(main_embed.setDescription("**__Fun commands__**").setFooter(`❱ Page ${cur_pages} / ${max}`, config.author_icon)).catch(console.error);       
+                  m.edit(main_embed.setDescription("**__Test commands__**").setFooter(`❱ Page ${cur_pages} / ${max}`, config.author_icon)).catch(console.error);       
                 }
 
                 if (cur_pages === 3) {
