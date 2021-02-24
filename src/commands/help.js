@@ -23,7 +23,7 @@ exports.run = (bot, msg, args) => {
       .addField("Reaction ❱ ➡️", "> Next page")
       .addField("Reaction ❱ ⬅️", "> Previous page")
       .addField("Reaction ❱ ❌", "> Exit")
-      .setFooter("❱ Hit 🆗 to start browsing", "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png")
+      .setFooter("❱ Hit 🆗 to start browsing", config.author_icon)
     msg.channel.send(help_embed).then(c => {
       // Create ➡️ / ⬅️ / ❌ / 🆗 reactions
       c.react('⬅️').catch(console.error);
@@ -49,7 +49,7 @@ exports.run = (bot, msg, args) => {
           // Delete user reaction
           await reaction.users.remove(userId).catch(console.error);
           // Edit embed
-          c.edit(help_embed.setFooter('Got it ! Help message will shutdown in 5 seconds...', "https://cdn.discordapp.com/avatars/295993693440180224/d4639de8d379af5c4b3e7e46c03dd192.png").setColor(0xFF3300)).catch(console.error);
+          c.edit(help_embed.setFooter('Got it ! Help message will shutdown in 5 seconds...', config.author_icon).setColor(0xFF3300)).catch(console.error);
           // Delete embed
           c.delete({ timeout : 5000 });
           // Re-init current help number
