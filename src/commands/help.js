@@ -40,7 +40,7 @@ exports.run = (bot, msg, args) => {
         if (reaction.message.id !== c.id) return;
 
         // Reaction checking #0 bis - If it's not from the same user or a bot
-        if (reaction.message.id === c.id && user.id !== m_author || reaction.message.id === c.id && user.id === bot.user.id) {
+        if (reaction.message.id === c.id && user.id !== m_author && user.id !== bot.user.id) {
           // Delete the reaction
           await reaction.users.remove(userId).catch(console.error);
         }
