@@ -99,7 +99,7 @@ exports.run = (bot, msg, args) => {
                 if (reaction.message.id !== m.id) return;
 
                 // In case nothing is right
-                if (user.id === bot.user.id || user.id !== m_author || reaction.emoji.name === '⬅️' && cur_pages === min || reaction.emoji.name === '➡️' && cur_pages === max) {
+                if (user.id === bot.user.id || reaction.message.id === m.id && user.id !== m_author || reaction.emoji.name === '⬅️' && cur_pages === min || reaction.emoji.name === '➡️' && cur_pages === max) {
                   // We delete the reaction + Return nothing
                   await reaction.users.remove(userId).catch(console.error);
                   return;
