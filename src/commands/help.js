@@ -12,11 +12,12 @@ exports.run = (bot, msg, args) => {
 
     // Noob vars
     var cur_pages = 1;
-    const m_author = msg.author.tag;
+    const m_author = msg.author.id;
+    const whois = msg.author.tag;
 
     // First embed
     const help_embed = new Discord.MessageEmbed()
-      .setAuthor(`Help asked by ❱ ${m_author}`, `${msg.author.displayAvatarURL(format = 'png', dynamic = true)}`)
+      .setAuthor(`Help asked by ❱ ${whois}`, `${msg.author.displayAvatarURL(format = 'png', dynamic = true)}`)
       .setTitle('📜 ❱ Help guide')
       .setColor(0x3898FF)
       .setDescription("**__Welcome on my help guide__**\nHere's how the navigation system works :\n")
@@ -39,13 +40,13 @@ exports.run = (bot, msg, args) => {
         if (reaction.message.id !== c.id) return;
 
         // Reaction checking #0 bis - If it's not from the same user
-        if (reaction.message.id === c.id && user.id !== msg.author.id && user.id !== bot.user.id) {
+        if (reaction.message.id === c.id && user.id !== m_author && user.id !== bot.user.id) {
           // Delete the reaction
           await reaction.users.remove(userId).catch(console.error);
         }
 
         // Reaction checking #1 - If user want to quit
-        if (reaction.emoji.name === '❌' && user.id !== bot.user.id && user.id === msg.author.id) {
+        if (reaction.emoji.name === '❌' && user.id !== bot.user.id && user.id === m_author) {
           // Delete user reaction
           await reaction.users.remove(userId).catch(console.error);
           // Edit embed
@@ -63,7 +64,7 @@ exports.run = (bot, msg, args) => {
         }
 
         // Reaction checking #3 - If he accepted the tutorial lol
-        if (reaction.emoji.name === '🆗' && user.id !== bot.user.id && user.id === msg.author.id) {
+        if (reaction.emoji.name === '🆗' && user.id !== bot.user.id && user.id === m_author) {
           // We totally delete the first embed
           c.delete({ timeout : 10 });
 
@@ -98,7 +99,7 @@ exports.run = (bot, msg, args) => {
                 if (reaction.message.id !== m.id) return;
 
                 // In case nothing is right
-                if (user.id === bot.user.id || reaction.emoji.name === '⬅️' && cur_pages === min || reaction.emoji.name === '➡️' && cur_pages === max) {
+                if (user.id === bot.user.id || user.id !== m_author || reaction.emoji.name === '⬅️' && cur_pages === min || reaction.emoji.name === '➡️' && cur_pages === max) {
                   // We delete the reaction + Return nothing
                   await reaction.users.remove(userId).catch(console.error);
                   return;
