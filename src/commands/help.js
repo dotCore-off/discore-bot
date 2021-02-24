@@ -38,6 +38,12 @@ exports.run = (bot, msg, args) => {
         // Reaction checking #0 - If it's not the good message the user reacted to
         if (reaction.message.id !== c.id) return;
 
+        // Reaction checking #0 bis - If it's not from the same user
+        if (reaction.message.id === c.id && user.id !== msg.author.id) {
+          // Delete the reaction
+          await reaction.users.remove(userId).catch(console.error);
+        }
+
         // Reaction checking #1 - If user want to quit
         if (reaction.emoji.name === '❌' && user.id !== bot.user.id && user.id === msg.author.id) {
           // Delete user reaction
