@@ -109,14 +109,14 @@ exports.run = (bot, msg, args) => {
                 if (reaction.emoji.name === '⬅️' && user.id !== bot.user.id && cur_pages !== min && user.id === m_author) {
                   await reaction.users.remove(userId).catch(console.error);
                   // We go to the previous page
-                  cur_pages--;
+                  cur_pages = cur_pages - 1;
                 }
 
                 // Checking the reaction + Current cur_pages values
                 if (reaction.emoji.name === '➡️' && user.id !== bot.user.id && cur_pages !== max && user.id === m_author) {
                   await reaction.users.remove(userId).catch(console.error);
                   // We go to the next page
-                  cur_pages++;
+                  cur_pages = cur_pages + 1;
                 }
 
                 // Checking the reaction + Current cur_pages values
