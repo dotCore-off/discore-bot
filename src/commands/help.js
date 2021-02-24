@@ -133,15 +133,15 @@ exports.run = (bot, msg, args) => {
 
                 // Help pages
                 if (cur_pages === 1) {
-                  m.edit(main_embed.setDescription("**__Administration commands__**").setFooter(`❱ Page ${cur_pages} / ${max}`, config.author_icon)).catch(console.error);       
+                  m.edit(main_embed.setDescription("**__Administration commands__**").setFooter(`❱ Page ${cur_pages} / ${max} | Prefix is ${config.prefix}`, config.author_icon)).catch(console.error);       
                 }
 
                 if (cur_pages === 2) {
-                  m.edit(main_embed.setDescription("**__Test commands__**").setFooter(`❱ Page ${cur_pages} / ${max}`, config.author_icon)).catch(console.error);       
+                  m.edit(main_embed.setDescription("**__Test commands__**").setFooter(`❱ Page ${cur_pages} / ${max} | Prefix is ${config.prefix}`, config.author_icon)).catch(console.error);       
                 }
 
                 if (cur_pages === 3) {
-                  m.edit(main_embed.setDescription("**__Fun commands__**").setFooter(`❱ Page ${cur_pages} / ${max}`, config.author_icon)).catch(console.error);       
+                  m.edit(main_embed.setDescription("**__Fun commands__**").setFooter(`❱ Page ${cur_pages} / ${max} | Prefix is ${config.prefix}`, config.author_icon)).catch(console.error);       
                 } 
               }           
             })
