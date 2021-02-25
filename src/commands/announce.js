@@ -36,7 +36,7 @@ exports.run = (bot, msg, args) => {
       .then(m => { m.delete({ timeout : 10000 }) }).catch(console.error);
     }
 
-    if (!colorHex || !message.content.startsWith('#')) { 
+    if (!colorHex || !colorHex.startsWith('#')) { 
       // Embed
       const embed = new Discord.MessageEmbed()
         .setTitle("🔔 ❱ Announcement system")
