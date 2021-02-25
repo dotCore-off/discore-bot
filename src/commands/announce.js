@@ -98,7 +98,7 @@ exports.run = (bot, msg, args) => {
       .setDescription("An announcement is planned !")
       .addField("Made by :", `${msg.author}`)
       .addField("Requested channel :", `${a_channel}`)
-      .addField("Embed color :", `${hexColor}`)
+      .addField("Embed color :", `${colorHex}`)
       .addField("Posted at :", `${dformat}`)
       .addField("Will be posted in :", `${timer} seconds`)
       .setFooter(config.trademark, config.author_icon)
