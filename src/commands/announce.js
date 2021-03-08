@@ -1,6 +1,7 @@
 // We import Discord
 const Discord = require('discord.js');
 const config = require('../../config.json');
+const colors = require('../../colors.json');
 
 // Announce function
 exports.run = (bot, msg, args) => {
@@ -12,7 +13,7 @@ exports.run = (bot, msg, args) => {
     const content = args_com.slice(4).join(' ');
     const g_channel = args_com[1];
     const a_channel = bot.channels.cache.get(`${g_channel}`);
-    const colorHex = args_com[2];
+    const cName = args_com[2];
     const timer = args_com[3];
     var d = new Date,
     dformat = [d.getMonth()+1,
@@ -28,7 +29,7 @@ exports.run = (bot, msg, args) => {
         .setTitle("🔔 ❱ Announcement system")
         .setColor(0xFF3300)
         .addField("``❌ An error occured !``", "> Please, provide a channel ID")
-        .addField("``✔️ Command syntax :``", "> ~announce **ChannelID** **TimeInSeconds** **Content**")
+        .addField("``✔️ Command syntax :``", "> ~announce **ChannelID** **ColorName** **TimeInSeconds** **Content**")
         .setFooter(config.trademark, config.author_icon)
       return msg.channel.send(embed).catch(console.error)
           
@@ -42,7 +43,7 @@ exports.run = (bot, msg, args) => {
         .setTitle("🔔 ❱ Announcement system")
         .setColor(0xFF3300)
         .addField("``❌ An error occured !``", "> Please, provide an hexadecimal color code")
-        .addField("``✔️ Command syntax :``", "> ~announce **ChannelID** **HexColor** **TimeInSeconds** **Content**")
+        .addField("``✔️ Command syntax :``", "> ~announce **ChannelID** **ColorName** **TimeInSeconds** **Content**")
         .setFooter(config.trademark, config.author_icon)
       return msg.channel.send(embed).catch(console.error)
           
@@ -56,7 +57,7 @@ exports.run = (bot, msg, args) => {
         .setTitle("🔔 ❱ Announcement system")
         .setColor(0xFF3300)
         .addField("``❌ An error occured !``", "> Please, provide a timer")
-        .addField("``✔️ Command syntax :``", "> ~announce **ChannelID** **TimeInSeconds** **Content**")
+        .addField("``✔️ Command syntax :``", "> ~announce **ChannelID** **ColorName** **TimeInSeconds** **Content**")
         .setFooter(config.trademark, config.author_icon)
       return msg.channel.send(embed).catch(console.error)
           
@@ -70,7 +71,7 @@ exports.run = (bot, msg, args) => {
         .setTitle("🔔 ❱ Announcement system")
         .setColor(0xFF3300)
         .addField("``❌ An error occured !``", "> Please, provide a message content")
-        .addField("``✔️ Command syntax :``", "> ~announce **ChannelID** **TimeInSeconds** **Content**")
+        .addField("``✔️ Command syntax :``", "> ~announce **ChannelID** **ColorName** **TimeInSeconds** **Content**")
         .setFooter(config.trademark, config.author_icon)
       return msg.channel.send(embed).catch(console.error)
           
@@ -98,7 +99,7 @@ exports.run = (bot, msg, args) => {
       .setDescription("An announcement is planned !")
       .addField("Made by :", `${msg.author}`)
       .addField("Requested channel :", `${a_channel}`)
-      .addField("Embed color :", `${colorHex}`)
+      .addField("Embed color :", `${colors.cName}`)
       .addField("Posted at :", `${dformat}`)
       .addField("Will be posted in :", `${timer} seconds`)
       .setFooter(config.trademark, config.author_icon)
@@ -116,7 +117,7 @@ exports.run = (bot, msg, args) => {
     function send_announce() {
       const embed = new Discord.MessageEmbed()
         .setAuthor("Waurum - Announcement", "https://cdn.discordapp.com/avatars/788195332630511628/6bae2b5d4380d6963cecc9f2bb5865b2.png", "https://discord.gg/ZKEdt6e")
-        .setColor(`${colorHex}`)
+        .setColor(`${colors.cName}`)
         .setDescription(`${content}`)
         .setFooter(config.trademark, config.author_icon)
       a_channel.send(embed).catch(console.error);
