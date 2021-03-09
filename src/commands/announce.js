@@ -99,7 +99,7 @@ exports.run = (bot, msg, args) => {
       .setDescription("An announcement is planned !")
       .addField("Made by :", `${msg.author}`)
       .addField("Requested channel :", `${a_channel}`)
-      .addField("Embed color :", `${colors.cName}`)
+      .addField("Embed color :", `colors.${cName}`)
       .addField("Posted at :", `${dformat}`)
       .addField("Will be posted in :", `${timer} seconds`)
       .setFooter(config.trademark, config.author_icon)
@@ -117,7 +117,7 @@ exports.run = (bot, msg, args) => {
     function send_announce() {
       const embed = new Discord.MessageEmbed()
         .setAuthor("Waurum - Announcement", "https://cdn.discordapp.com/avatars/788195332630511628/6bae2b5d4380d6963cecc9f2bb5865b2.png", "https://discord.gg/ZKEdt6e")
-        .setColor(`${colors.cName}`)
+        .setColor(`colors.${cName}`)
         .setDescription(`${content}`)
         .setFooter(config.trademark, config.author_icon)
       a_channel.send(embed).catch(console.error);
