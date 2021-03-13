@@ -93,7 +93,9 @@ module.exports.run = (bot, msg, args) => {
           .addField("✅ ❱ Verified member :", kickMember.user)
           .addField("📆 ❱ Date :", message.createdAt.toLocaleString())
           .setFooter(config.trademark, config.author_icon)
-        msg.channel.send(logs_verif);
+          
+        const channel = message.guild.channels.cache.find(ch => ch.name === '📟┃logs-waurum');
+        channel.send(logs_verif);
         return;
       }   
     })
