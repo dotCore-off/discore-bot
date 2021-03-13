@@ -86,6 +86,14 @@ module.exports.run = (bot, msg, args) => {
         // We give the role
         let verifRole = msg.guild.roles.cache.find(role => role.id == "790181776575692820");
         msg.member.roles.add(verifRole);
+
+        const logs_verif = new Discord.MessageEmbed()
+          .setAuthor(`${author} ❱ Verify Logs`,`${msg.author.displayAvatarURL(format = 'png', dynamic = true)}`)
+          .setColor(0x3898FF)
+          .addField("✅ ❱ Verified member :", kickMember.user)
+          .addField("📆 ❱ Date :", message.createdAt.toLocaleString())
+          .setFooter(config.trademark, config.author_icon)
+        msg.channel.send(logs_verif);
         return;
       }   
     })
