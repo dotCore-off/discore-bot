@@ -90,10 +90,10 @@ module.exports.run = (bot, msg, args) => {
         const logs_verif = new Discord.MessageEmbed()
           .setAuthor(`${author} ❱ Verify Logs`,`${msg.author.displayAvatarURL(format = 'png', dynamic = true)}`)
           .setColor(0x3898FF)
-          .addField("✅ ❱ Verified member :", kickMember.user)
+          .addField("✅ ❱ Verified member :", author)
           .addField("📆 ❱ Date :", message.createdAt.toLocaleString())
           .setFooter(config.trademark, config.author_icon)
-          
+
         const channel = message.guild.channels.cache.find(ch => ch.name === '📟┃logs-waurum');
         channel.send(logs_verif);
         return;
