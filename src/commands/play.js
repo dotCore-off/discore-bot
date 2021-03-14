@@ -1,7 +1,7 @@
 // We import Discord
 const Discord = require('discord.js');
 const config = require('../../config.json');
-const ytdl = require('ytdl-core');
+const ytdl = require('../ytdl-core');
 const queue = new Map();
 
 // Play function
