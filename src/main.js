@@ -4,7 +4,6 @@ const path = require('path')
 const fs = require('fs')
 const config = require('../config.json');
 const colors = require('../colors.json');
-const ytdl = require('ytdl-core');
 const commands = new Map()
 const bot = new Discord.Client();
 
